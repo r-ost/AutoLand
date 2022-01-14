@@ -20,10 +20,23 @@ namespace WebAPI.Controllers
             _vehicleService = vehicleService;
         }
 
-        [HttpGet]
-        public IEnumerable<VehicleDto> Get()
+
+        [HttpPost("{brand}/{model}/GetPrice")]
+        public double GetPrice(string brand, string model, [FromBody] RentDto rentDto)
         {
-            return _vehicleService.Get();
+            throw new NotImplementedException();
+        }
+
+        [HttpPost("{id}/GetPrice")]
+        public double GetPrice(int id, [FromBody] RentDto rentDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost("Return/{rentId}")]
+        public double GetPrice(int rentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
