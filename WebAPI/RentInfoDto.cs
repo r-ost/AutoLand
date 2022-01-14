@@ -1,6 +1,6 @@
 ﻿namespace WebAPI
 {
-    public class RentDto
+    public class RentInfoDto
     {
         public int Age { get; init; }
         public int YearsOfHavingDriverLicense { get; init; }
