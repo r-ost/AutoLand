@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebAPI.Dtos;
 namespace WebAPI
 {
     [ApiController]
@@ -26,7 +27,7 @@ namespace WebAPI
         }
 
         [HttpPost("Rent/{quoteId}")]
-        public double GetPrice([FromRoute] int quoteId, [FromBody] StartDateDto startDateDto)
+        public RentResponseDto Rent([FromRoute] int quoteId, [FromBody] StartDateDto startDateDto)
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebAPI.Dtos;
 
 namespace WebAPI.Controllers
 {
@@ -22,13 +23,13 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("{brand}/{model}/GetPrice")]
-        public PriceInfoDto GetPrice(string brand, string model, [FromBody] RentInfoDto rentInfoDto)
+        public PriceResponseInfoDto GetPrice(string brand, string model, [FromBody] UserRentInfoDto userRentInfoDto)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost("{id}/GetPrice")]
-        public PriceInfoDto GetPrice(int id, [FromBody] RentInfoDto rentInfoDto)
+        public PriceResponseInfoDto GetPrice(int id, [FromBody] UserRentInfoDto userRentInfoDto)
         {
             throw new NotImplementedException();
         }
