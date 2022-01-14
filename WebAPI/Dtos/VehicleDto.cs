@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebAPI
+namespace WebAPI.Dtos
 {
     public class VehicleDto
     {

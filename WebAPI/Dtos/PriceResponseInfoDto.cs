@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace WebAPI
+namespace WebAPI.Dtos
 {
-    public class PriceInfoDto
+    public class PriceResponseInfoDto
     {
         public double Price { get; set; }
         public string  Currency { get; set; }
