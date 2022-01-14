@@ -9,7 +9,7 @@ namespace WebAPI
 {
     [ApiController]
     [Route("[controller]")]
-    public class VehiclesController
+    public class VehiclesController : Controller
     {
         private readonly ILogger<VehiclesController> _logger;
         private readonly IVehicleService _vehicleService;
@@ -21,9 +21,9 @@ namespace WebAPI
         }
 
         [HttpGet]
-        public IEnumerable<VehicleDto> Get()
+        public ActionResult<IEnumerable<VehicleDto>> Get()
         {
-            return _vehicleService.Get();
+            return StatusCode(200, _vehicleService.Get());
         }
 
         [HttpPost("Rent/{quoteId}")]

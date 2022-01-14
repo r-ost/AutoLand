@@ -23,19 +23,19 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("{brand}/{model}/GetPrice")]
-        public PriceResponseInfoDto GetPrice(string brand, string model, [FromBody] UserRentInfoDto userRentInfoDto)
+        public ActionResult<PriceResponseInfoDto> GetPrice(string brand, string model, [FromBody] UserRentInfoDto userRentInfoDto)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost("{id}/GetPrice")]
-        public PriceResponseInfoDto GetPrice(int id, [FromBody] UserRentInfoDto userRentInfoDto)
+        public ActionResult<PriceResponseInfoDto> GetPrice(int id, [FromBody] UserRentInfoDto userRentInfoDto)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost("Return/{rentId}")]
-        public void Return(int rentId)
+        public ActionResult Return(int rentId)
         {
             throw new NotImplementedException();
         }
