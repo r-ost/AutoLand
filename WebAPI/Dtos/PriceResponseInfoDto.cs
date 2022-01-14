@@ -4,10 +4,10 @@ namespace WebAPI.Dtos
 {
     public class PriceResponseInfoDto
     {
-        public double Price { get; set; }
-        public string  Currency { get; set; }
-        public DateTime GeneratedAt { get; set; }
-        public DateTime ExpiredAt { get; set; }
-        public int QuotaId { get; set; }
+        public double Price { get; init; }
+        public string  Currency { get; init; }
+        public DateTime GeneratedAt { get; init; }
+        public DateTime ExpiredAt { get; init; }
+        public string QuotaId { get; init; }
     }
 }

@@ -3,10 +3,10 @@ namespace WebAPI.Dtos
 {
     public class RentResponseDto
     {
-        public int QuoteId { get; set; }
-        public int RentId { get; set; }
-        public DateTime RentAt { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime endDate { get; set; }
+        public string QuoteId { get; init; }
+        public string RentId { get; init; }
+        public DateTime RentAt { get; init; }
+        public DateTime StartDate { get; init; }
+        public DateTime endDate { get; init; }
     }
 }
