@@ -7,7 +7,7 @@ namespace WebAPI.Services
 {
     public interface IRentService
     {
-        RentResponseDto Rent(string quoteId, StartDateDto startDateDto);
+        RentResponseDto Rent(Guid quoteId, StartDateDto startDateDto);
         void Return(Guid guid);
     }
 }

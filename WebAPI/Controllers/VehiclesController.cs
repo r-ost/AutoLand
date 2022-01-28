@@ -30,7 +30,7 @@ namespace WebAPI
         }
 
         [HttpPost("Rent/{quoteId}")]
-        public ActionResult<RentResponseDto> Rent([FromRoute] string quoteId/*or quotA?*/, [FromBody] StartDateDto startDateDto)
+        public ActionResult<RentResponseDto> Rent([FromRoute] Guid quoteId/*or quotA?*/, [FromBody] StartDateDto startDateDto)
         {
             
             return StatusCode(201, _rentService.Rent(quoteId, startDateDto));

@@ -18,7 +18,7 @@ namespace WebAPI.Services
             _mapper = mapper;
         }
 
-        public RentResponseDto Rent(string quoteId, StartDateDto startDateDto)
+        public RentResponseDto Rent(Guid quoteId, StartDateDto startDateDto)
         {
             //todo check if vehicle is available
             var priceEstimations = _context.PriceEstimations.ToList();

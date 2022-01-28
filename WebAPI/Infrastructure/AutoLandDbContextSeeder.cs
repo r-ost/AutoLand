@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Entities;
 
@@ -83,7 +84,7 @@ namespace WebAPI.Infrastructure
                     Currency = "zuoto",
                     GeneratedAt = System.DateTime.Now,
                     //ExpiredAt = System.DateTime.Now,
-                    QuotaId = "abc",
+                    QuotaId = Guid.NewGuid(),
                     VehicleId = 1,
                     estimatedVehicle = _context.Vehicles.FirstOrDefault(x => x.Id == 1)
                 });

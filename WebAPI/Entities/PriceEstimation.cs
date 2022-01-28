@@ -10,7 +10,7 @@ namespace WebAPI.Entities
         public string Currency { get; set; } = "";
         public DateTime GeneratedAt { get; set; }
         public DateTime ExpiredAt { get; set; }
-        public string QuotaId { get; set; } = "";
+        public Guid QuotaId { get; set; }
 
 
         public int VehicleId { get; set; }
