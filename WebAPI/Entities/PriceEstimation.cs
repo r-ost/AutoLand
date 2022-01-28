@@ -16,9 +16,12 @@ namespace WebAPI.Entities
         public int VehicleId { get; set; }
         public Vehicle estimatedVehicle { get; set; }
 
-        public void Calculate()
+        public double Calculate()
         {
-            throw new NotImplementedException();
+            //todo
+            //mock:
+            Random random = new Random();   
+            return Price = random.Next(300, 1000);
         }
     }
 }

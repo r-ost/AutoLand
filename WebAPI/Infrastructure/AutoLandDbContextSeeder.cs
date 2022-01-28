@@ -74,6 +74,25 @@ namespace WebAPI.Infrastructure
                       );
                     _context.SaveChanges();
                 }
+
+            if (!_context.PriceEstimations.Any())
+            {
+                _context.PriceEstimations.Add(new PriceEstimation()
+                {
+                    Price = 200.200,
+                    Currency = "zuoto",
+                    GeneratedAt = System.DateTime.Now,
+                    //ExpiredAt = System.DateTime.Now,
+                    QuotaId = "abc",
+                    VehicleId = 1,
+                    estimatedVehicle = _context.Vehicles.FirstOrDefault(x => x.Id == 1)
+                });
+                _context.SaveChanges();
+            }
+            if (!_context.Rents.Any())
+            {
+
+            }
         }
     }
 }

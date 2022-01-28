@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Infrastructure;
 
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(AutoLandDbContext))]
-    partial class RentsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220128153332_modifyPriceEst")]
+    partial class modifyPriceEst
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
