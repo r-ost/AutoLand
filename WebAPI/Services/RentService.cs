@@ -27,6 +27,7 @@ namespace WebAPI.Services
             Rent rent;
             _context.Rents.Add(rent = new Rent //todo powinno byc automaperrowane
             {
+                RentId = Guid.NewGuid(),
                 RentAt = DateTime.Now,
                 StartDate = startDateDto.StartDate,
                 //EndDate = //from where?
@@ -38,15 +39,19 @@ namespace WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<RentResponseDto>(rent);
-            //    new RentResponseDto()
-            //{
-            //    QuoteId = rent.QuoteId,
-            //    RentId = rent.RentId,
-            //    RentAt = rent.RentAt,
-            //    StartDate = rent.StartDate,
-            //    EndDate = rent.EndDate
-            //};
         }
 
+        public void Return(Guid rentId)
+        {
+            //todo add biznes logic
+            Rent rent = _context.Rents.FirstOrDefault(r => r.RentId == rentId);
+            if(rent != null)
+            {
+                rent.RentStatus = RentStatus.Completed;
+                rent.EndDate = DateTime.Now;
+                _context.Rents.Update(rent);
+                _context.SaveChanges();
+            }
+        }
     }
 }

@@ -21,16 +21,6 @@ namespace WebAPI.Services
             var vehicles = _context.Vehicles.ToList();
 
             return _mapper.Map<List<VehicleDto>>(vehicles);
-            //return vehicles.Select(x => new VehicleDto()
-            //{
-            //    BrandName = x.BrandName,
-            //    Capacity = x.Capacity,
-            //    Description = x.Description,
-            //    EnginePower = x.EnginePower,
-            //    EnginePowerType = x.EnginePowerType,
-            //    ModelName = x.ModelName,
-            //    Year = x.Year
-            //});
 
         }
     }
