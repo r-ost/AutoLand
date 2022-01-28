@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Infrastructure;
 
 namespace WebAPI
 {
@@ -28,11 +29,14 @@ namespace WebAPI
 
             services.AddTransient<IVehicleService, VehicleService>();
             services.AddControllers();
+            services.AddDbContext<AutoLandDbContext>();
+            services.AddScoped<AutoLandDbContextSeeder>();
         } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AutoLandDbContextSeeder seeder)
         {
+            seeder.Seed();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

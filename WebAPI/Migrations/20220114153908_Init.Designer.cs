@@ -10,7 +10,7 @@ using WebAPI.Infrastructure;
 
 namespace WebAPI.Migrations
 {
-    [DbContext(typeof(RentsDbContext))]
+    [DbContext(typeof(AutoLandDbContext))]
     [Migration("20220114153908_Init")]
     partial class Init
     {

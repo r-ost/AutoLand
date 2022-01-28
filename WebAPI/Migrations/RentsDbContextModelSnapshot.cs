@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Entities;
+using WebAPI.Infrastructure;
 
 namespace WebAPI.Migrations
 {
-    [DbContext(typeof(RentsDbContext))]
+    [DbContext(typeof(AutoLandDbContext))]
     partial class RentsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
