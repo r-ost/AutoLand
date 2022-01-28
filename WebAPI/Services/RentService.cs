@@ -4,15 +4,18 @@ using System.Linq;
 using WebAPI.Dtos;
 using WebAPI.Entities;
 using WebAPI.Infrastructure;
+using AutoMapper;
 
 namespace WebAPI.Services
 {
     public class RentService : IRentService
     {
         private AutoLandDbContext _context;
-        public RentService(AutoLandDbContext context)
+        private IMapper _mapper;
+        public RentService(AutoLandDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public RentResponseDto Rent(string quoteId, StartDateDto startDateDto)
@@ -34,14 +37,15 @@ namespace WebAPI.Services
                 QuoteId = Guid.NewGuid()
             });
 
-            return new RentResponseDto()
-            {
-                QuoteId = rent.QuoteId,
-                RentId = rent.RentId,
-                RentAt = rent.RentAt,
-                StartDate = rent.StartDate,
-                EndDate = rent.EndDate
-            };
+            return _mapper.Map<RentResponseDto>(rent);
+            //    new RentResponseDto()
+            //{
+            //    QuoteId = rent.QuoteId,
+            //    RentId = rent.RentId,
+            //    RentAt = rent.RentAt,
+            //    StartDate = rent.StartDate,
+            //    EndDate = rent.EndDate
+            //};
         }
 
     }
