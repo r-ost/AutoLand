@@ -14,31 +14,34 @@ namespace WebAPI.Controllers
     public class VehicleController : ControllerBase
     {
         private readonly ILogger<VehicleController> _logger;
-        private readonly IVehicleService _vehicleService;
+        private readonly IPriceEstimationService _priceEstimationService;
+        private readonly IRentService _rentService;
 
-        public VehicleController(ILogger<VehicleController> logger, IVehicleService vehicleService)
+        public VehicleController(ILogger<VehicleController> logger, IPriceEstimationService priceEstimationService, IRentService rentService)
         {
             _logger = logger;
-            _vehicleService = vehicleService;
+            _priceEstimationService = priceEstimationService;
+            _rentService = rentService;
         }
 
 
         [HttpPost("{brand}/{model}/GetPrice")]
-        public ActionResult<PriceResponseInfoDto> GetPrice(string brand, string model, [FromBody] UserRentInfoDto userRentInfoDto)
+        public ActionResult<PriceResponseInfoDto> GetPrice([FromBody] UserRentInfoDto userRentInfoDto, string brand, string model)
         {
-            throw new NotImplementedException();
+            return StatusCode(200, _priceEstimationService.GetPrice(userRentInfoDto, brand, model));
         }
 
         [HttpPost("{id}/GetPrice")]
-        public ActionResult<PriceResponseInfoDto> GetPrice(int id, [FromBody] UserRentInfoDto userRentInfoDto)
+        public ActionResult<PriceResponseInfoDto> GetPrice([FromBody] UserRentInfoDto userRentInfoDto, int id)
         {
-            throw new NotImplementedException();
+            return StatusCode(200, _priceEstimationService.GetPrice(userRentInfoDto, id));
         }
 
         [HttpPost("Return/{rentId}")]
-        public ActionResult Return(int rentId)
+        public ActionResult Return(Guid rentId)
         {
-            throw new NotImplementedException();
+            _rentService.Return(rentId);
+            return StatusCode(200);
         }
     }
 }
