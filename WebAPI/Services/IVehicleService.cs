@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using WebAPI.Dtos;
 
-namespace WebAPI
+namespace WebAPI.Services
 {
     public interface IVehicleService
     {
-        IEnumerable<VehicleDto> Get();
+        IEnumerable<VehicleDto> GetAll();
     }
 }
 

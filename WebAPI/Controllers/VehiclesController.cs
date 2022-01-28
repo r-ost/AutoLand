@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebAPI.Dtos;
+using WebAPI.Services;
 namespace WebAPI
 {
     [ApiController]
@@ -13,23 +14,26 @@ namespace WebAPI
     {
         private readonly ILogger<VehiclesController> _logger;
         private readonly IVehicleService _vehicleService;
+        private readonly IRentService _rentService;
 
-        public VehiclesController(ILogger<VehiclesController> logger, IVehicleService vehicleService)
+        public VehiclesController(ILogger<VehiclesController> logger, IVehicleService vehicleService, IRentService rentService)
         {
             _logger = logger;
             _vehicleService = vehicleService;
+            _rentService = rentService;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<VehicleDto>> Get()
         {
-            return StatusCode(200, _vehicleService.Get());
+            return StatusCode(200, _vehicleService.GetAll());
         }
 
         [HttpPost("Rent/{quoteId}")]
-        public RentResponseDto Rent([FromRoute] int quoteId, [FromBody] StartDateDto startDateDto)
+        public ActionResult<RentResponseDto> Rent([FromRoute] string quoteId/*or quotA?*/, [FromBody] StartDateDto startDateDto)
         {
-            throw new NotImplementedException();
+            
+            return StatusCode(200, _rentService.Rent(quoteId, startDateDto));
         }
     }
 

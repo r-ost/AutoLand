@@ -10,23 +10,18 @@ namespace WebAPI.Entities
     public class Rent
     {
         public int Id { get; set; }
-        public string RentId { get; set; } = "";
+        public Guid RentId { get; set; }
 
-        public DateTime? RentAt { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public DateTime RentAt { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; } //from vehicle return?
         public RentStatus RentStatus { get; set; }
-
-
-        public int VehicleId { get; set; }
-        public Vehicle vehicle { get; set; }
-
 
         public int PriceId { get; set; }
         public PriceEstimation priceEstimation { get; set; }
 
 
-        public string QuotaId { get; set; } = "";
+        public Guid QuoteId { get; set; }
 
     }
 }

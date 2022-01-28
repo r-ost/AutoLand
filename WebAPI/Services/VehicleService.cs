@@ -4,7 +4,7 @@ using System.Linq;
 using WebAPI.Dtos;
 using WebAPI.Infrastructure;
 
-namespace WebAPI
+namespace WebAPI.Services
 {
     public class VehicleService : IVehicleService
     {
@@ -13,7 +13,7 @@ namespace WebAPI
         {
             _context = context;
         }
-        public IEnumerable<VehicleDto> Get()
+        public IEnumerable<VehicleDto> GetAll()
         {
             var vehicles = _context.Vehicles.ToList();
 
@@ -28,18 +28,6 @@ namespace WebAPI
                 Year = x.Year
             });
 
-            //var rng = new Random();
-            //return Enumerable.Range(1, 5).Select(index => new VehicleDto
-            //{
-            //    BrandName = "Mercedes",
-            //    ModelName = "AMG",
-            //    Year = rng.Next(2000, 2010),
-            //    EnginePower = rng.Next(200, 400),
-            //    EnginePowerType = "KM",
-            //    Capacity = rng.Next(3, 5),
-            //    Description = "--przyładowy opis" + index + "--"
-            //})
-            //.ToArray();
         }
     }
 }

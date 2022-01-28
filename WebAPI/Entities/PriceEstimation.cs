@@ -14,7 +14,7 @@ namespace WebAPI.Entities
 
 
         public int VehicleId { get; set; }
-        public Vehicle vehicle { get; set; }
+        public Vehicle estimatedVehicle { get; set; }
 
         public void Calculate()
         {
