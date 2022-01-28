@@ -1,6 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using WebAPI.Dtos;
+using WebAPI.Entities;
 using WebAPI.Infrastructure;
+using AutoMapper;
 
 namespace WebAPI.Services
 {
@@ -21,8 +25,23 @@ namespace WebAPI.Services
 
         public PriceResponseInfoDto GetPrice(UserRentInfoDto userRentInfoDtoint, int id)
         {
-            throw new System.NotImplementedException();
-        }
-    
+            var vehicle = _context.Vehicles.FirstOrDefault(x => x.Id == id);
+
+            var priceEstimation = new PriceEstimation()
+            {
+                Currency = "PLN",
+                GeneratedAt = DateTime.Now,
+                ExpiredAt = DateTime.Now.AddMinutes(15),
+                QuotaId = Guid.NewGuid(),
+                VehicleId = vehicle.Id,
+                estimatedVehicle = vehicle
+            };
+            priceEstimation.Calculate();
+
+            _context.PriceEstimations.Add(priceEstimation);
+            _context.SaveChanges();
+
+            return _mapper.Map<PriceResponseInfoDto>(priceEstimation);
+        }  
     }
 }
