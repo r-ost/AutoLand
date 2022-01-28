@@ -20,7 +20,23 @@ namespace WebAPI.Services
 
         public PriceResponseInfoDto GetPrice(UserRentInfoDto userRentInfoDtostring, string brand, string model)
         {
-            throw new System.NotImplementedException();
+            var vehicle = _context.Vehicles.FirstOrDefault(x => x.ModelName == model && x.BrandName == brand);
+
+            var priceEstimation = new PriceEstimation()
+            {
+                Currency = "PLN",
+                GeneratedAt = DateTime.Now,
+                ExpiredAt = DateTime.Now.AddMinutes(15),
+                QuotaId = Guid.NewGuid(),
+                VehicleId = vehicle.Id,
+                estimatedVehicle = vehicle
+            };
+            priceEstimation.Calculate();
+
+            _context.PriceEstimations.Add(priceEstimation);
+            _context.SaveChanges();
+
+            return _mapper.Map<PriceResponseInfoDto>(priceEstimation);
         }
 
         public PriceResponseInfoDto GetPrice(UserRentInfoDto userRentInfoDtoint, int id)

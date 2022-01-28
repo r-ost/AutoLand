@@ -21,9 +21,8 @@ namespace WebAPI.Services
         public RentResponseDto Rent(Guid quoteId, StartDateDto startDateDto)
         {
             //todo check if vehicle is available
-            var priceEstimations = _context.PriceEstimations.ToList();
 
-            PriceEstimation quotedPE = priceEstimations.FirstOrDefault(x => x.QuotaId == quoteId);
+            PriceEstimation quotedPE = _context.PriceEstimations.FirstOrDefault(x => x.QuotaId == quoteId);
             Rent rent;
             _context.Rents.Add(rent = new Rent //todo powinno byc automaperrowane
             {
