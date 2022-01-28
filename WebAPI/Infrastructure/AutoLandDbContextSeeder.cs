@@ -83,7 +83,7 @@ namespace WebAPI.Infrastructure
                     Price = 200.200,
                     Currency = "zuoto",
                     GeneratedAt = System.DateTime.Now,
-                    //ExpiredAt = System.DateTime.Now,
+                    ExpiredAt = System.DateTime.Now.AddYears(1),
                     QuotaId = Guid.NewGuid(),
                     VehicleId = 1,
                     estimatedVehicle = _context.Vehicles.FirstOrDefault(x => x.Id == 1)
