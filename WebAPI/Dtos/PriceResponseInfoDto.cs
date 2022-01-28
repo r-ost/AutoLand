@@ -8,6 +8,6 @@ namespace WebAPI.Dtos
         public string  Currency { get; init; }
         public DateTime GeneratedAt { get; init; }
         public DateTime ExpiredAt { get; init; }
-        public string QuotaId { get; init; }
+        public Guid QuotaId { get; init; }
     }
 }
