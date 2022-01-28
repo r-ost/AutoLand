@@ -31,6 +31,7 @@ namespace WebAPI
 
             services.AddTransient<IVehicleService, VehicleService>();
             services.AddTransient<IRentService, RentService>();
+            services.AddTransient<IPriceEstimationService, PriceEstimationService>();
             services.AddControllers();
             services.AddDbContext<AutoLandDbContext>();
             services.AddScoped<AutoLandDbContextSeeder>();
