@@ -21,12 +21,11 @@ namespace WebAPI.Services
         public RentResponseDto Rent(string quoteId, StartDateDto startDateDto)
         {
             //todo check if vehicle is available
-            var rents = _context.Rents.ToList();
             var priceEstimations = _context.PriceEstimations.ToList();
 
             PriceEstimation quotedPE = priceEstimations.FirstOrDefault(x => x.QuotaId == quoteId);
             Rent rent;
-            rents.Add(rent = new Rent
+            _context.Rents.Add(rent = new Rent //todo powinno byc automaperrowane
             {
                 RentAt = DateTime.Now,
                 StartDate = startDateDto.StartDate,
@@ -36,6 +35,7 @@ namespace WebAPI.Services
                 priceEstimation = quotedPE,
                 QuoteId = Guid.NewGuid()
             });
+            _context.SaveChanges();
 
             return _mapper.Map<RentResponseDto>(rent);
             //    new RentResponseDto()

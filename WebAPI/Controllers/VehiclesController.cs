@@ -33,7 +33,7 @@ namespace WebAPI
         public ActionResult<RentResponseDto> Rent([FromRoute] string quoteId/*or quotA?*/, [FromBody] StartDateDto startDateDto)
         {
             
-            return StatusCode(200, _rentService.Rent(quoteId, startDateDto));
+            return StatusCode(201, _rentService.Rent(quoteId, startDateDto));
         }
     }
 
