@@ -12,6 +12,10 @@ namespace WebAPI.Entities
         public DateTime ExpiredAt { get; set; }
         public string QuotaId { get; set; } = "";
 
+
+        public int VehicleId { get; set; }
+        public Vehicle vehicle { get; set; }
+
         public void Calculate()
         {
             throw new NotImplementedException();
