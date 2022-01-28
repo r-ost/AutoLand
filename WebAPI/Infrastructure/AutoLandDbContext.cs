@@ -16,7 +16,7 @@ namespace WebAPI.Infrastructure
             //TODO others 
 
             modelBuilder.Entity<Rent>()
-                .Property(r => r.QuotaId)
+                .Property(r => r.QuoteId)
                 .IsRequired();
 
             modelBuilder.Entity<PriceEstimation>()
