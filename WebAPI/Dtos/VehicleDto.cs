@@ -4,6 +4,7 @@ namespace WebAPI.Dtos
 {
     public class VehicleDto
     {
+        public string Id { get; set; }
         public string BrandName { get; init; }
 
         public string ModelName { get; init; }
