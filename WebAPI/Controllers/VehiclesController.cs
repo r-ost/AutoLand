@@ -24,9 +24,15 @@ namespace WebAPI
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<VehicleDto>> Get()
+        public ActionResult<VehiclesResponseDto> Get()
         {
-            return StatusCode(200, _vehicleService.GetAll());
+            var vehicles = _vehicleService.GetAll();
+            return StatusCode(200, new VehiclesResponseDto
+            {
+                Vehicles = vehicles,
+                GenerateDate = DateTime.UtcNow,
+                VehiclesCount = vehicles.Count()
+            });
         }
 
         [HttpPost("Rent/{quoteId}")]

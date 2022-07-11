@@ -32,9 +32,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("{id}/GetPrice")]
-        public ActionResult<PriceResponseInfoDto> GetPrice([FromBody] UserRentInfoDto userRentInfoDto, int id)
+        public ActionResult<PriceResponseInfoDto> GetPrice([FromBody] UserRentInfoDto userRentInfoDto, Guid id)
         {
-            return StatusCode(200, _priceEstimationService.GetPrice(userRentInfoDto, id));
+            return StatusCode(200, _priceEstimationService.GetPrice(userRentInfoDto, id.ToString()));
         }
 
         [HttpPost("Return/{rentId}")]
