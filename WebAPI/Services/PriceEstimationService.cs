@@ -29,7 +29,8 @@ namespace WebAPI.Services
                 ExpiredAt = DateTime.Now.AddMinutes(15),
                 QuotaId = Guid.NewGuid(),
                 VehicleId = vehicle.Id,
-                estimatedVehicle = vehicle
+                estimatedVehicle = vehicle,
+                RentDuration = userRentInfoDtostring.RentDuration
             };
             priceEstimation.Calculate();
 
@@ -39,9 +40,9 @@ namespace WebAPI.Services
             return _mapper.Map<PriceResponseInfoDto>(priceEstimation);
         }
 
-        public PriceResponseInfoDto GetPrice(UserRentInfoDto userRentInfoDtoint, int id)
+        public PriceResponseInfoDto GetPrice(UserRentInfoDto userRentInfoDtoint, string id)
         {
-            var vehicle = _context.Vehicles.FirstOrDefault(x => x.Id == id);
+            var vehicle = _context.Vehicles.FirstOrDefault(x => x.VehicleId == id);
 
             var priceEstimation = new PriceEstimation()
             {
@@ -50,7 +51,8 @@ namespace WebAPI.Services
                 ExpiredAt = DateTime.Now.AddMinutes(15),
                 QuotaId = Guid.NewGuid(),
                 VehicleId = vehicle.Id,
-                estimatedVehicle = vehicle
+                estimatedVehicle = vehicle,
+                RentDuration = userRentInfoDtoint.RentDuration
             };
             priceEstimation.Calculate();
 
