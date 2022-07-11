@@ -11,7 +11,7 @@ namespace WebAPI.Entities
         public DateTime GeneratedAt { get; set; }
         public DateTime ExpiredAt { get; set; }
         public Guid QuotaId { get; set; }
-
+        public int RentDuration { get; set; }
 
         public int VehicleId { get; set; }
         public Vehicle estimatedVehicle { get; set; }
