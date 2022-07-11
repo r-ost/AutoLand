@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Infrastructure;
 
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(AutoLandDbContext))]
-    partial class RentsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220711223630_AddVehicleId")]
+    partial class AddVehicleId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,9 +42,6 @@ namespace WebAPI.Migrations
 
                     b.Property<Guid>("QuotaId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("RentDuration")
-                        .HasColumnType("int");
 
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");

@@ -20,57 +20,62 @@ namespace WebAPI.Infrastructure
                 {
                     _context.Vehicles.Add(new Vehicle
                     {
-                        BrandName = "Toyota",
-                        ModelName = "Corolla",
+                        BrandName = "Audi",
+                        ModelName = "A4",
                         Year = 2006,
                         EnginePower = 80,
                         EnginePowerType = "HP",
                         Capacity = 5,
-                        Description = "Description of Toyota Corolla: very reliable and slow."
+                        Description = "Description of Audi A4.",
+                        VehicleId = (Guid.NewGuid()).ToString()
                     }
                      );
                     _context.Vehicles.Add(new Vehicle
                     {
-                        BrandName = "Volvo",
-                        ModelName = "S60",
+                        BrandName = "Audi",
+                        ModelName = "A3",
                         Year = 2001,
                         EnginePower = 180,
                         EnginePowerType = "HP",
                         Capacity = 5,
-                        Description = "Description of TVolvo: old and fast."
+                        Description = "Description of Audi A3.",
+                        VehicleId = (Guid.NewGuid()).ToString()
                     }
                       );
                     _context.Vehicles.Add(new Vehicle
                     {
-                        BrandName = "Volvo",
-                        ModelName = "XC60",
+                        BrandName = "Audi",
+                        ModelName = "R8",
                         Year = 2016,
                         EnginePower = 280,
                         EnginePowerType = "HP",
                         Capacity = 5,
-                        Description = "Description of better volvo: 4x4 and spacey."
+                        Description = "Description of Audi R8.",
+                        VehicleId = (Guid.NewGuid()).ToString()
                     }
                       );
                     _context.Vehicles.Add(new Vehicle
                     {
-                        BrandName = "Fiat",
-                        ModelName = "500",
+                        BrandName = "Alfa Romeo",
+                        ModelName = "Giulietta",
                         Year = 1982,
                         EnginePower = 40,
                         EnginePowerType = "HP",
                         Capacity = 4,
-                        Description = "Description of better cinquecento: old but gold."
+                        Description = "Description of Alfa Romeo Giulietta.",
+                        VehicleId = (Guid.NewGuid()).ToString()
                     }
                       );
                     _context.Vehicles.Add(new Vehicle
                     {
-                        BrandName = "Hyundai",
-                        ModelName = "i20",
+                        BrandName = "Alfa Romeo",
+                        ModelName = "Stelvio",
                         Year = 2016,
                         EnginePower = 80,
                         EnginePowerType = "HP",
                         Capacity = 5,
-                        Description = "Description of better Hyundai: small and steady"
+                        Description = "Description of Alfa Romeo Stelvio",
+                        VehicleId = (Guid.NewGuid()).ToString()
                     }
                       );
                     _context.SaveChanges();
@@ -78,6 +83,7 @@ namespace WebAPI.Infrastructure
 
             if (!_context.PriceEstimations.Any())
             {
+                var vehicleId = _context.Vehicles.First().VehicleId;
                 _context.PriceEstimations.Add(new PriceEstimation()
                 {
                     Price = 200.200,
