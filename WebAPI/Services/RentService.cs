@@ -23,13 +23,15 @@ namespace WebAPI.Services
             //todo check if vehicle is available
 
             PriceEstimation quotedPE = _context.PriceEstimations.FirstOrDefault(x => x.QuotaId == quoteId);
+            
             Rent rent;
+            
             _context.Rents.Add(rent = new Rent //todo powinno byc automaperrowane
             {
                 RentId = Guid.NewGuid(),
                 RentAt = DateTime.Now,
                 StartDate = startDateDto.StartDate,
-                //EndDate = //from where?
+                EndDate = startDateDto.StartDate.AddDays(quotedPE.RentDuration),
                 RentStatus = RentStatus.Pending,
                 PriceId = quotedPE.Id,
                 priceEstimation = quotedPE,
