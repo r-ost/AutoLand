@@ -4,8 +4,10 @@ namespace WebAPI.Infrastructure
 {
     public class AutoLandDbContext : DbContext
     {
-        private string _connectionString =
-            "Data Source=localhost;Initial Catalog=AutoLandDB;Integrated Security=True";
+        public AutoLandDbContext(DbContextOptions<AutoLandDbContext> options) : base(options)
+        {
+        }
+
         public DbSet<Rent> Rents { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<PriceEstimation> PriceEstimations { get; set; }
@@ -23,10 +25,6 @@ namespace WebAPI.Infrastructure
                 .Property(r => r.QuotaId)
                 .IsRequired();
 
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
         }
     }
 }
