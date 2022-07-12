@@ -15,6 +15,8 @@ namespace WebAPI.Infrastructure
 
         public void Seed()
         {
+            _context.Database.EnsureCreated();
+
             if (_context.Database.CanConnect())
                 if (!_context.Vehicles.Any())
                 {
