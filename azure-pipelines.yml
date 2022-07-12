@@ -4,7 +4,7 @@
 
 
 trigger:
-- develop
+- main
 
 resources:
 - repo: self
@@ -25,9 +25,9 @@ stages:
       displayName: Build an image
       inputs:
         command: buildAndPush
-        dockerfile: '$(Build.SourcesDirectory)/src/WebUI/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/src/WebAPI/Dockerfile'
         buildContext: .
-        repository: jszablanowski/minirent
+        repository: jszablanowski/autoland
         tags: |
           $(tag)
           latest
