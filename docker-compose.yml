@@ -2,10 +2,7 @@ version: '3.4'
 
 services:
   webapi:
-    image: ${DOCKER_REGISTRY-}webapi
-    build:
-      context: .
-      dockerfile: WebAPI/Dockerfile
+    image: jszablanowski/autoland
     environment:
       - "ConnectionStrings__DefaultConnection=Server=autoland_db;Database=AutoLandDB;User=sa;Password=Your_password12345;MultipleActiveResultSets=true"
     ports:
